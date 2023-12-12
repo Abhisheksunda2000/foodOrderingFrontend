@@ -1,47 +1,57 @@
 import React from "react";
 
 export default function Carousel() {
+  const imageStyle = {
+    objectFit: "cover",
+    width: "100%",
+    height: "500px", // Set the height as needed
+  };
+
   return (
     <div
       id="carouselExampleFade"
       className="carousel slide carousel-fade"
-      style={{ objectFit: "cover !important" }}
+      data-bs-ride="carousel"
     >
       <div className="carousel-inner" id="carousel">
-        <div className="carousel-caption" style={{ zIndex: "10" }}>
-          <form className="d-flex">
+        <div className="carousel-caption d-none d-md-block" style={{ zIndex: "10" }}>
+          <form className="form-inline">
             <input
-              className="form-control me-2"
+              className="form-control mr-sm-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
             <button
-              className="btn btn-outline-success bg-success text-white"
+              className="btn btn-outline-success my-2 my-sm-0 text-white bg-success"
               type="submit"
             >
               Search
             </button>
           </form>
         </div>
+
         <div className="carousel-item active">
           <img
-            src="https://source.unsplash.com/random/900*700/?burger"
-            className="d-block w-100"
+            src="https://source.unsplash.com/random/900x500/?burger"
+            className="d-block w-100 img-fluid"
+            style={{ filter: "brightness(30%)", imageStyle }}
             alt="..."
           />
         </div>
         <div className="carousel-item">
           <img
-            src="https://source.unsplash.com/random/900*700/?pizza"
-            className="d-block w-100"
+            src="https://source.unsplash.com/random/900x500/?pastry"
+            className="d-block w-100 img-fluid"
+            style={{ filter: "brightness(30%)", imageStyle }}
             alt="..."
           />
         </div>
         <div className="carousel-item">
           <img
-            src="https://source.unsplash.com/random/900*700/?pastry"
-            className="d-block w-100"
+            src="https://source.unsplash.com/random/900x500/?barbeque"
+            className="d-block w-100 img-fluid"
+            style={{ filter: "brightness(30%)", imageStyle }}
             alt="..."
           />
         </div>

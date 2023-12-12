@@ -7,9 +7,13 @@ export default function Home() {
   return (
     <>
         <Navbar />
-        <div><Carousel /></div>
-        <div>
+        <div> <Carousel /></div>
+        <div className='m-3'>
           <Card />
+          <Card />
+          <Card />
+          <Card />
+          
         </div>
         <Footer />
     </>
