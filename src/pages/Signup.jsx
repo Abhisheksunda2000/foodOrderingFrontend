@@ -1,18 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-
-export default function Login() {
+export default function Signup() {
   
-  const [credentials, setCredentials] = useState({email:"", password:""});
-  let navigate = useNavigate();
+  const [credentials, setCredentials] = useState({name:"", email:"", password:"", location:""});
+  let naviagate = useNavigate();
   const handleSubmit = async(e)=>{
         e.preventDefault();
-        const response = await fetch("http://localhost:3000/api/loginuser",{
+        const response = await fetch("http://localhost:3000/api/createuser",{
           method:"POST",
           headers:{
             'Content-Type':'application/json'
           },
-          body:JSON.stringify({email:credentials.email, password:credentials.password})
+          body:JSON.stringify({name:credentials.name, email:credentials.email, password:credentials.password, location:credentials.location})
         });
         const json = await response.json();
         console.log(json);
@@ -22,21 +21,24 @@ export default function Login() {
         }
 
         if(json.success){
-          localStorage.setItem("authToken",json.authToken);
-          console.log(localStorage.getItem("authToken"));
-          navigate("/");
+          naviagate("/");
         }
-
   };
 
   const onChange = async(e) => {
           setCredentials({...credentials,[e.target.name]:e.target.value});
   };
+
   return (
     <>
     <div className="container">
     <form onSubmit={handleSubmit}>
-    
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
+          <input type="text" name="name" className="form-control" value={credentials.name} onChange={onChange}/>
+        </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
@@ -50,7 +52,9 @@ export default function Login() {
             value={credentials.email}
             onChange={onChange}
           />
-        
+          <div id="emailHelp" className="form-text">
+            We'll never share your email with anyone else.
+          </div>
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -66,14 +70,28 @@ export default function Login() {
           />
         </div>
 
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword2" className="form-label">
+            Address
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="exampleInputPassword2"
+            name="location"
+            value={credentials.location}
+            onChange={onChange}
+          />
+        </div>
+
         <button type="submit" className="m-3 btn btn-success">
           Submit
         </button>
-        <Link className="m-3 btn btn-danger"to="/createuser">I'm a new user</Link>
+        <Link className="m-3 btn btn-danger"to="/login">Already a user</Link>
       </form>
 
     </div>
       
     </>
-  )
+  );
 }
