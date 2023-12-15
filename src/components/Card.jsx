@@ -7,7 +7,7 @@ export default function Card({item}) {
   
   return (
     <div className="card mt-3" style={{ width: "19rem", maxHeight: "500px" }}>
-      <img src={item.img} className="card-img-top" alt="..." style={{ minHeight:"200px" ,maxHeight:"200px" }}/>
+      <img src={item.img} className="card-img-top" alt="..." style={{ height:"200px", objectFit:"fill" }}/>
       <div className="card-body">
         <h5 className="card-title">{item.name}</h5>
         <p className="card-text">

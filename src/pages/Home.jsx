@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   const imageStyle = {
-    objectFit: "cover",
+    objectFit: "fill",
     width: "100%",
     height: "500px", // Set the height as needed
   };
