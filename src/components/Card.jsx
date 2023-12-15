@@ -1,13 +1,17 @@
 import React from "react";
 
-export default function Card() {
+export default function Card({item}) {
+  let options = item.options;
+  console.log(options);
+  let priceOptions = Object.keys(options[0]); 
+  
   return (
-    <div className="card mt-3" style={{ width: "18rem", maxHeight: "360px" }}>
-      <img src="https://source.unsplash.com/900x500/?pastry" className="card-img-top" alt="..." />
+    <div className="card mt-3" style={{ width: "19rem", maxHeight: "500px" }}>
+      <img src={item.img} className="card-img-top" alt="..." style={{ minHeight:"200px" ,maxHeight:"200px" }}/>
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
+        <h5 className="card-title">{item.name}</h5>
         <p className="card-text">
-          Some quick example text to build on the card.
+          {item.description}
         </p>
         <div className="container w-100">
           <select className="m-2 h-100 bg-success rounded">
@@ -21,9 +25,12 @@ export default function Card() {
           </select>
 
           <select className="m-2 h-100 bg-success rounded">
-            <option value="Regular">Regular</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
+            {
+              priceOptions.map((data)=>{
+                console.log(data);
+                return <option key={data} value={data}> {data} </option>
+              })
+            }
           </select>
 
           <div className="d-inline h-100 fs-7">Total Price</div>

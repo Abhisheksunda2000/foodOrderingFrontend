@@ -15,7 +15,7 @@ export default function Carousel() {
     >
       <div className="carousel-inner" id="carousel">
         <div className="carousel-caption d-none d-md-block" style={{ zIndex: "10" }}>
-          <form className="form-inline">
+          <form className="form-inline d-flex">
             <input
               className="form-control mr-sm-2"
               type="search"
