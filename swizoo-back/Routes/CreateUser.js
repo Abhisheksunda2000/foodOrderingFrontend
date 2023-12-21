@@ -21,14 +21,27 @@ async(req,res)=>{
     const salt = await bcrypt.genSalt(10);
     const secPassword = await bcrypt.hash(req.body.password,salt);
     try{
-       await User.create({
+       let email = req.body.email;
+       let userData  = await User.findOne({email});
+
+       if(userData){
+        return res.status(400).json({errors:"Email is already registered, Try using with different email"});
+       }
+       else{
+
+        await User.create({
             name: req.body.name,
             password:secPassword,
-            email:req.body.email,
+            email:email,
             location:req.body.location
            });
 
-        res.json({success:true});
+        return res.json({success:true});
+
+       }
+       
+       
+       
 
     }catch(err){
        console.log(err);
