@@ -10,16 +10,16 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("https://foodordering-qf4c.onrender.com/api/foodData", {
-        method: "POST",
+      let response = await fetch("http://localhost:3000/api/v1/foods/get-foodItems", {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
 
       response = await response.json();
-      setFoodItem(response[0] || []);
-      setFoodCat(response[1] || []);
+      setFoodItem(response.data.foodItems);
+      setFoodCat(response.data.foodCategory);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
