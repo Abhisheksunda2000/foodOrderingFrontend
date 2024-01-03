@@ -34,7 +34,7 @@ export default function Card({item}) {
         }
         return; 
       }
-      await dispatch({type:"ADD", id: item._id, name: item.name, price: finalPrice, qty: qty, size : size});
+      await dispatch({type:"ADD", id: item._id, name: item.name, price: finalPrice, qty: qty, size : size, img: item.img});
   }
 
 
@@ -68,7 +68,6 @@ export default function Card({item}) {
           >
             {
               priceOptions.map((data)=>{
-                console.log(data);
                 return <option key={data} value={data}> {data} </option>
               })
             }
