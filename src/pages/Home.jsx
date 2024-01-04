@@ -10,7 +10,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("http://localhost:3000/api/v1/foods/get-foodItems", {
+      let response = await fetch("https://swizoo-backend.onrender.com/api/v1/foods/get-foodItems", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
