@@ -20,7 +20,7 @@ export default function Cart() {
   const handleCheckout = async () => {
     
       let userEmail = localStorage.getItem("userEmail");
-      let response = await fetch("/api/v1/orders/order", {
+      let response = await fetch("https://swizoo-backend.onrender.com/api/v1/orders/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
