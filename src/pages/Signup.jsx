@@ -6,7 +6,7 @@ export default function Signup() {
   let naviagate = useNavigate();
   const handleSubmit = async(e)=>{
         e.preventDefault();
-        const response = await fetch("https://swizoo-backend.onrender.com/api/v1/users/register",{
+        const response = await fetch("/api/v1/users/register",{
           method:"POST",
           headers:{
             'Content-Type':'application/json'
