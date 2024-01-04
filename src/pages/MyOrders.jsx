@@ -7,7 +7,7 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/v1/orders/order-data", {
+      const res = await fetch("https://swizoo-backend.onrender.com/api/v1/orders/order-data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
